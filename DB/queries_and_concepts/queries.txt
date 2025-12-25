@@ -1,0 +1,169 @@
+ CREATE DATABASE 	dbproject;
+
+USE dbproject;
+
+
+CREATE TABLE student ( stud_id int PRIMARY KEY, Name varchar(50) NOT NULL , email varchar(50), cgpa decimal(8,2),branch varchar(50),skills varchar(50));
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(101,"Anvi","anvi123@gmail.com",7.0,"CSE","Python");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(102,"Deekshan","deekshan123@gmail.com",8.2,"IT","Python");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(103,"Harish","harish123@gmail.com",6.5,"CSE","UI/UX");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(104,"Rangith","rangith123@gmail.com",7.5,"IT","Developing");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(105,"Sandy","sandy123@gmail.com",7.2,"CSE","Developing");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(106,"Anvith","anvi123@gmail.com",8.0,"CSE","Python");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(107,"Rahul","rahul123@gmail.com",7.8,"IT","Java");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(108,"Meera","meera123@gmail.com",9.1,"CSE","Data Science");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(109,"Karthik","karthik123@gmail.com",6.9,"IT","Web Dev");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(110,"Priya","priya123@gmail.com",8.3,"CSE","UI/UX");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(111,"Vikram","vikram123@gmail.com",7.5,"IT","Python");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(112,"Sneha","sneha123@gmail.com",6.8,"CSE","Graphic Design");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(113,"Arjun","arjun123@gmail.com",7.9,"IT","Machine Learning");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(114,"Divya","divya123@gmail.com",8.6,"CSE","Cloud Computing");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(115,"Manoj","manoj123@gmail.com",6.5,"IT","JavaScript");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(116,"Anitha","anitha123@gmail.com",7.7,"CSE","Python");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(117,"Rohan","rohan123@gmail.com",8.2,"IT","Full Stack");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(118,"Lakshmi","lakshmi123@gmail.com",7.4,"CSE","UI/UX");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(119,"Suresh","suresh123@gmail.com",6.7,"IT","Web Dev");
+INSERT INTO student (stud_id,name,email,cgpa,branch,skills) VALUES(120,"Nithya","nithya123@gmail.com",8.1,"CSE","Data Analytics");
+SELECT  *  FROM student;
+
+CREATE TABLE companies (id INT PRIMARY KEY,c_name VARCHAR(50),min_cgpa DECIMAL(8,2),branch_allowed VARCHAR(50));
+INSERT INTO companies (id,c_name,min_cgpa,branch_allowed) VALUES (201,"HXL",7.2,"IT");
+INSERT INTO companies (id,c_name,min_cgpa,branch_allowed) VALUES (202,"HOZO",7.5,"CSE");
+INSERT INTO companies (id,c_name,min_cgpa,branch_allowed) VALUES (203,"NYKAA",7.0,"CSE");
+INSERT INTO companies (id,c_name,min_cgpa,branch_allowed) VALUES (204,"TECHNOVATE",6.8,"IT");
+INSERT INTO companies (id,c_name,min_cgpa,branch_allowed) VALUES (205,"INFOSYNC",7.3,"CSE");
+SELECT * FROM companies;
+
+CREATE TABLE visits(id INT PRIMARY KEY,company_id INT,CONSTRAINT fk_company FOREIGN KEY (company_id) REFERENCES companies(id),date_of_visit DATE,round_type VARCHAR(50));
+INSERT INTO visits(id,company_id,date_of_visit,round_type) VALUES (301,201,"2025-04-11","Aptitude");
+INSERT INTO visits(id,company_id,date_of_visit,round_type) VALUES (302,202,"2025-06-01","HR");
+INSERT INTO visits(id,company_id,date_of_visit,round_type) VALUES (303,203,"2025-07-10","GD");
+INSERT INTO visits(id,company_id,date_of_visit,round_type) VALUES (304,201,"2025-11-30","Technical");
+INSERT INTO visits(id,company_id,date_of_visit,round_type) VALUES (305,204,"2025-05-15","Aptitude");
+INSERT INTO visits(id,company_id,date_of_visit,round_type) VALUES (306,205,"2025-06-20","HR");
+INSERT INTO visits(id,company_id,date_of_visit,round_type) VALUES (307,202,"2025-08-05","Technical");
+INSERT INTO visits(id,company_id,date_of_visit,round_type) VALUES (308,203,"2025-09-12","HR");
+INSERT INTO visits(id,company_id,date_of_visit,round_type) VALUES (309,204,"2025-10-03","GD");
+INSERT INTO visits(id,company_id,date_of_visit,round_type) VALUES (310,205,"2025-11-18","Technical");
+SELECT * FROM visits;
+
+CREATE TABLE jobs(id INT PRIMARY KEY,company_id INT,title VARCHAR(50),salary_range VARCHAR(50),CONSTRAINT fk1_company FOREIGN KEY (company_id) REFERENCES companies(id));
+INSERT INTO jobs(id,company_id,title,salary_range) VALUES (401,201,"FULL STACK DEVELOPMENT","6 LPA");
+INSERT INTO jobs(id,company_id,title,salary_range) VALUES (402,202,"Data Analyst","5 LPA");
+INSERT INTO jobs(id,company_id,title,salary_range) VALUES (403,203,"Web Development","5 LPA");
+INSERT INTO jobs(id,company_id,title,salary_range) VALUES (404,203,"Cloud Computing","7 LPA");
+INSERT INTO jobs(id,company_id,title,salary_range) VALUES (405,202,"Web Development","6 LPA");
+INSERT INTO jobs(id,company_id,title,salary_range) VALUES (406,202,"FULL STACK DEVELOPMENT","4 LPA");
+INSERT INTO jobs(id,company_id,title,salary_range) VALUES (407,201,"Python Developer","6 LPA");
+INSERT INTO jobs(id,company_id,title,salary_range) VALUES (408,203,"FULL STACK DEVELOPMENT","5 LPA");
+INSERT INTO jobs(id,company_id,title,salary_range) VALUES (409,204,"Data Engineer","6 LPA");
+INSERT INTO jobs(id,company_id,title,salary_range) VALUES (410,205,"Cloud Developer","7 LPA");
+SELECT * from jobs;
+
+CREATE TABLE attendance(id INT PRIMARY KEY,student_id INT,CONSTRAINT fk_stud FOREIGN KEY (student_id) REFERENCES student(stud_id),visit_id INT,CONSTRAINT fk_visit FOREIGN KEY (visit_id) REFERENCES visits(id),a_status VARCHAR(50));
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (501,102,301,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (502,103,302,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (503,104,303,"ABSENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (504,105,304,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (505,106,305,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (506,107,306,"ABSENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (507,108,307,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (508,109,308,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (509,110,309,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (510,111,310,"ABSENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (511,112,301,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (512,113,302,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (513,114,303,"ABSENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (514,115,304,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (515,116,305,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (516,117,306,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (517,118,307,"ABSENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (518,119,308,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (519,120,309,"PRESENT");
+INSERT INTO attendance(id,student_id,visit_id,a_status) VALUES (520,101,310,"PRESENT");
+SELECT * from attendance;
+
+CREATE TABLE placements(id INT PRIMARY KEY,student_id INT,CONSTRAINT fk1_stud FOREIGN KEY (student_id) REFERENCES student(stud_id),company_id INT,CONSTRAINT fk3_company FOREIGN KEY (company_id) REFERENCES companies(id),package VARCHAR(20));
+INSERT INTO placements(id,student_id,company_id,package) VALUES (601,102,201,"5 LPA");
+INSERT INTO placements(id,student_id,company_id,package) VALUES (602,103,202,"6 LPA");
+INSERT INTO placements(id,student_id,company_id,package) VALUES (603,105,203,"4 LPA");
+INSERT INTO placements(id,student_id,company_id,package) VALUES (604,106,204,"6 LPA");
+INSERT INTO placements(id,student_id,company_id,package) VALUES (605,108,202,"5 LPA");
+INSERT INTO placements(id,student_id,company_id,package) VALUES (606,110,205,"7 LPA");
+INSERT INTO placements(id,student_id,company_id,package) VALUES (607,112,201,"5 LPA");
+INSERT INTO placements(id,student_id,company_id,package) VALUES (608,114,203,"6 LPA");
+
+
+UPDATE student SET cgpa = 8.5 WHERE stud_id = 103;
+
+
+DROP TRIGGER IF EXISTS check_cgpa;
+DELIMITER $$
+CREATE TRIGGER check_cgpa
+BEFORE INSERT ON placements
+FOR EACH ROW
+BEGIN
+  DECLARE stud_cgpa DECIMAL(8,2);
+  DECLARE comp_min_cgpa DECIMAL(8,2);
+  SELECT cgpa
+  INTO stud_cgpa
+  FROM student
+  WHERE stud_id = NEW.student_id;
+  SELECT min_cgpa
+  INTO comp_min_cgpa
+  FROM companies
+  WHERE id = NEW.company_id;
+  IF stud_cgpa < comp_min_cgpa THEN
+    SIGNAL SQLSTATE '45000'
+    SET MESSAGE_TEXT = 'Student CGPA not eligible';
+  END IF;
+END$$
+DELIMITER ;
+
+
+
+INSERT INTO placements(id,student_id,company_id,package)
+VALUES (701,102,201,'5 LPA');
+
+
+
+INSERT INTO placements(id,student_id,company_id,package)
+VALUES (702,119,202,'5 LPA');
+
+
+
+SELECT 
+  student.stud_id,
+  student.name,
+  student.cgpa,
+  student.branch,
+  companies.c_name,
+  companies.min_cgpa
+FROM student JOIN companies ON student.cgpa >= companies.min_cgpa AND student.branch = companies.branch_allowed;
+
+
+
+SELECT
+    companies.c_name,
+    jobs.title,
+    jobs.salary_range
+FROM companies JOIN jobs ON companies.id = jOBS.company_id;
+
+
+CREATE VIEW Student_Basic AS SELECT stud_id, name, cgpa FROM Student;
+
+
+SELECT
+    package,
+    CASE
+        WHEN package LIKE '7%' THEN 'High Package'
+        WHEN package LIKE '5%' OR package LIKE '6%' THEN 'Medium Package'
+        ELSE 'Low Package'
+    END AS package_category
+FROM placements;
+
+
+SELECT company_id, COUNT(student_id) AS total_placed FROM placements GROUP BY company_id;
+
+
+SELECT count(*) FROM placements;
